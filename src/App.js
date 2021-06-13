@@ -71,7 +71,8 @@ function App() {
             placeholder="search"
             onChange={(e) => {
               setKeyword(e.target.value);
-              headerselect.current = "selected";
+              if (e.target.value) headerselect.current = "selected";
+              else headerselect.current = "";
             }}
             value={keyword}
             style={{
@@ -81,8 +82,6 @@ function App() {
             }}
           ></input>
         </div>
-
-        {/* result component */}
         <Result keyword={keyword} theme={theme[themeselect]} />
       </div>
     </div>
