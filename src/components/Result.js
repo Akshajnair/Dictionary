@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Result(props) {
@@ -64,7 +64,6 @@ export default function Result(props) {
     else return "";
   }
   function invalidsearch() {
-    console.log(response);
     if (isfound === false)
       return (
         <div className="banner-display">
