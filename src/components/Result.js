@@ -11,7 +11,15 @@ export default function Result(props) {
       return (
         <div className="searched-meaning-individual" key={index}>
           <div className="partofspeech">{element.partOfSpeech + ":  "}</div>
-          <div className="definition">{element.definitions[0].definition}</div>
+          {/* <div className="definition">{element.definitions[0].definition}</div> */}
+          <div className="definition">
+            {(() => {
+              return element.definitions.map((element, index) => {
+                return <div key={index}>{element.definition}</div>;
+              });
+            })()}
+          </div>
+
           <div className="example">
             {(() => {
               if (element.definitions[0].example)
@@ -31,22 +39,46 @@ export default function Result(props) {
             style={{ color: props.theme.theme }}
           >
             {response.word}
+            {(() => {
+              if (response.phonetics[0].audio)
+                return (
+                  <button
+                    className="speaker"
+                    onClick={() => {
+                      let audio = new Audio(response.phonetics[0].audio);
+                      audio.play();
+                    }}
+                  >
+                    <i
+                      className="fas fa-volume-up"
+                      style={{ color: props.theme.theme }}
+                    ></i>
+                  </button>
+                );
+            })()}
           </div>
+
           <div className="searched-meaning">{getmeaning()}</div>
         </div>
       );
     else return "";
   }
   function invalidsearch() {
+    console.log(response);
     if (isfound === false)
       return (
         <div className="banner-display">
-          <div className="banner-text">Sry :(</div>
-          <div className="banner-text">Word Not Found</div>
+          <div className="banner-text" style={{ color: props.theme.darktext }}>
+            Sry :(
+          </div>
+          <div className="banner-text" style={{ color: props.theme.darktext }}>
+            Word Not Found
+          </div>
         </div>
       );
     else return <div></div>;
   }
+
   useEffect(() => {
     let cancel = () => {
       return null;
