@@ -1,0 +1,30 @@
+{
+  "name": "dictionary",
+  "version": "1.0.0",
+  "description": "Use Tensorflow Hand recognition model to make moves and play.",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "client-install": "cd client && npm install",
+    "build": "cd client && npm build",
+    "heroku-postbuild": "npm run client-install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akshajnair/Dictionary.git"
+  },
+  "author": "akshaj nair",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akshajnair/Dictionary/issues"
+  },
+  "homepage": "https://github.com/Akshajnair/Dictionary#readme"
+}
